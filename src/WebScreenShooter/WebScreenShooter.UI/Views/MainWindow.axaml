@@ -3,15 +3,63 @@
         xmlns:vm="clr-namespace:WebScreenShooter.UI.ViewModels;assembly=WebScreenShooter.UI"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
         x:Class="WebScreenShooter.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
+        Height="450"
+        Width="500"
         Title="WebScreenShooter">
-
+  <Panel Margin="10">
     <Design.DataContext>
-        <vm:MainWindowViewModel/>
+      <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel Orientation="Vertical">
+      <Panel Margin="10">
+        <TextBox Text="{Binding URL}"
+                 Watermark="Enter URLs here"
+                 Width="300"
+                 HorizontalAlignment="Left"/>
 
+        <Button Content="Add"
+                Width="150"
+                Height="25"
+                HorizontalAlignment="Right"/>
+      </Panel>
+      <Panel Margin="10">
+        <TextBox Text="{Binding SitemapURL}"
+                 Watermark="Enter website sitemap.xml here"
+                 Width="300"
+                 HorizontalAlignment="Left"/>
+
+        <Button Content="Get URLs"
+                Width="150"
+                Height="25"
+                HorizontalAlignment="Right"/>
+      </Panel>
+
+      <Grid ColumnDefinitions="60*, 30*" RowDefinitions="Auto,Auto,Auto,Auto,Auto"  Margin="5">
+        <TextBox Text="{Binding URLs}"
+                 AcceptsReturn="True"
+                 Watermark="Add URL or add sitemap.xml"
+                 Grid.Row="0" Grid.Column="0"/>
+
+        <ComboBox Items="{Binding Platfroms}"
+                  Grid.Row="0" Grid.Column="1"
+                  >
+          <ComboBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding IsSelected}"
+                           Width="20" />
+                <TextBlock Text="{Binding Name}"
+                           Width="100" />
+              </StackPanel>
+            </DataTemplate>
+          </ComboBox.ItemTemplate>
+        </ComboBox>
+      </Grid>
+    </StackPanel>
+  </Panel>
 </Window>
