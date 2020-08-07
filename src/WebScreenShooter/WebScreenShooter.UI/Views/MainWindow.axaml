@@ -10,12 +10,13 @@
         Height="450"
         Width="500"
         Title="WebScreenShooter">
+  
   <Panel Margin="10">
     <Design.DataContext>
       <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical">
+    <StackPanel Orientation="Vertical" >
       <Panel Margin="10">
         <TextBox Text="{Binding URL}"
                  Watermark="Enter URLs here"
@@ -23,9 +24,12 @@
                  HorizontalAlignment="Left"/>
 
         <Button Content="Add"
+                Name="addButton"
+                Click="MyButton_Click"
                 Width="150"
                 Height="25"
-                HorizontalAlignment="Right"/>
+                HorizontalAlignment="Right"
+                />
       </Panel>
       <Panel Margin="10">
         <TextBox Text="{Binding SitemapURL}"
@@ -45,7 +49,26 @@
                  Watermark="Add URL or add sitemap.xml"
                  Grid.Row="0" Grid.Column="0"/>
 
-        <ComboBox Items="{Binding Platfroms}"
+
+        <ListBox Items="{Binding Platfroms}"
+               SelectionMode="Multiple"
+               Name="platforms"
+               Grid.Row="0"
+               Grid.Column="1">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding IsSelected}"
+                           Width="20" />
+                <TextBlock Text="{Binding Name}"
+                           Width="100" />
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--<ComboBox Items="{Binding Platfroms}"
+                  Name="platforms"
                   Grid.Row="0" Grid.Column="1"
                   >
           <ComboBox.ItemTemplate>
@@ -58,7 +81,7 @@
               </StackPanel>
             </DataTemplate>
           </ComboBox.ItemTemplate>
-        </ComboBox>
+        </ComboBox>-->
       </Grid>
     </StackPanel>
   </Panel>

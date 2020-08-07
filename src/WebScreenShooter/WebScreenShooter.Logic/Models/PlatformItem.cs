@@ -7,6 +7,6 @@ namespace WebScreenShooter.Logic.Models
 	public class PlatformItem
 	{
 		public string Name { get; set; }
-		public bool IsChecked { get; set; }
+		public bool IsSelected { get; set; }
 	}
 }
