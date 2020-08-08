@@ -20,24 +20,6 @@
     </Design.DataContext>
 
     <DockPanel>
-      <Expander ContentTransition="1">
-        <ListBox Items="{Binding Platfroms}"
-              SelectionMode="Multiple"
-              Margin="4"
-              Grid.Row="3"
-              Grid.Column="1">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding IsSelected}"
-                           Width="20" />
-                <TextBlock Text="{Binding Name}"
-                           Width="100" />
-              </StackPanel>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
-      </Expander>
       <Grid ColumnDefinitions="60*, 30*" 
             RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" >
         <TextBox Text="{Binding URL}"
