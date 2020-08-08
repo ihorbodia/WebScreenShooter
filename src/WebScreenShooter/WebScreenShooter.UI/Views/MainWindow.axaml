@@ -4,21 +4,42 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:xctk="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
-        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="500"
         x:Class="WebScreenShooter.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Height="450"
+        Height="400"
+        MaxHeight="400"
+        MinHeight="400"
         Width="500"
+        MaxWidth="500"
+        MinWidth="500"
         Title="WebScreenShooter">
   
-  <Panel Margin="10">
     <Design.DataContext>
       <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <StackPanel Orientation="Vertical" >
+    <DockPanel>
+      <Expander ContentTransition="1">
+        <ListBox Items="{Binding Platfroms}"
+              SelectionMode="Multiple"
+              Margin="4"
+              Grid.Row="3"
+              Grid.Column="1">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding IsSelected}"
+                           Width="20" />
+                <TextBlock Text="{Binding Name}"
+                           Width="100" />
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </Expander>
       <Grid ColumnDefinitions="60*, 30*" 
-            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" >
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" >
         <TextBox Text="{Binding URL}"
                  Watermark="Enter URLs here"
                  HorizontalAlignment="Stretch"
@@ -106,6 +127,5 @@
 
        
       </Grid>
-    </StackPanel>
-  </Panel>
+    </DockPanel>
 </Window>
