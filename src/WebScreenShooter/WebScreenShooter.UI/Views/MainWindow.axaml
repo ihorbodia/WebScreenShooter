@@ -17,43 +17,55 @@
     </Design.DataContext>
 
     <StackPanel Orientation="Vertical" >
-      <Panel Margin="10">
+      <Grid ColumnDefinitions="60*, 30*" 
+            RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" >
         <TextBox Text="{Binding URL}"
                  Watermark="Enter URLs here"
-                 Width="300"
-                 HorizontalAlignment="Left"/>
+                 HorizontalAlignment="Stretch"
+                 Margin="4"
+                 Grid.Row="0"
+                 Grid.Column="0"/>
 
         <Button Content="Add"
                 Name="addButton"
                 Click="MyButton_Click"
-                Width="150"
-                Height="25"
-                HorizontalAlignment="Right"
+                Margin="4"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
                 />
-      </Panel>
-      <Panel Margin="10">
         <TextBox Text="{Binding SitemapURL}"
                  Watermark="Enter website sitemap.xml here"
-                 Width="300"
-                 HorizontalAlignment="Left"/>
+                 Grid.Row="1"
+                 Grid.Column="0"
+                 Margin="4"
+                 HorizontalAlignment="Stretch"/>
 
         <Button Content="Get URLs"
-                Width="150"
-                Height="25"
-                HorizontalAlignment="Right"/>
-      </Panel>
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="4"
+                HorizontalAlignment="Stretch"/>
 
-      <Grid ColumnDefinitions="60*, 30*" RowDefinitions="Auto,Auto,Auto,Auto,Auto"  Margin="5">
+        <ScrollViewer Height="250"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto"
+                      VerticalContentAlignment="Top"
+                      Grid.Row="3"
+                 Grid.RowSpan="5"
+                 Grid.Column="0">
         <TextBox Text="{Binding URLs}"
                  AcceptsReturn="True"
                  Watermark="Add URL or add sitemap.xml"
-                 Grid.Row="0" Grid.Column="0"/>
-
-
+                 Margin="4"
+                 />
+        </ScrollViewer>
+        
         <ListBox Items="{Binding Platfroms}"
                SelectionMode="Multiple"
                Name="platforms"
-               Grid.Row="0"
+               Margin="4"
+               Grid.Row="3"
                Grid.Column="1">
           <ListBox.ItemTemplate>
             <DataTemplate>
@@ -67,21 +79,33 @@
           </ListBox.ItemTemplate>
         </ListBox>
 
-        <!--<ComboBox Items="{Binding Platfroms}"
-                  Name="platforms"
-                  Grid.Row="0" Grid.Column="1"
-                  >
-          <ComboBox.ItemTemplate>
-            <DataTemplate>
-              <StackPanel Orientation="Horizontal">
-                <CheckBox IsChecked="{Binding IsSelected}"
-                           Width="20" />
-                <TextBlock Text="{Binding Name}"
-                           Width="100" />
-              </StackPanel>
-            </DataTemplate>
-          </ComboBox.ItemTemplate>
-        </ComboBox>-->
+        <Button Content="Storage"
+           Grid.Row="4"
+           Grid.Column="1"
+           Margin="4"
+           HorizontalAlignment="Stretch"/>
+
+        <TextBox Text="{Binding URLs}"
+                AcceptsReturn="True"
+                Watermark="Enter wait time (default ∞)"
+                Margin="4"
+                Grid.Row="6"
+                Grid.Column="1"/>
+
+        <Button Content="Reset"
+           Grid.Row="7"
+           Grid.Column="1"
+           Margin="4"
+           HorizontalAlignment="Stretch"/>
+
+        <Button Content="Start"
+           Grid.Row="8"
+           Grid.Column="1"
+           Margin="4"
+           HorizontalAlignment="Stretch"/>
+
+
+       
       </Grid>
     </StackPanel>
   </Panel>

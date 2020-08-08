@@ -26,9 +26,9 @@ namespace WebScreenShooter.Views
 		private void InitializeComponent()
 		{
 			AvaloniaXamlLoader.Load(this);
-			AddButton = this.FindControl<Button>("addButton");
-			Platforms = this.FindControl<ListBox>("platforms");
-			Platforms.PropertyChanged += Platforms_PropertyChanged;
+			//AddButton = this.FindControl<Button>("addButton");
+			//Platforms = this.FindControl<ListBox>("platforms");
+			//Platforms.PropertyChanged += Platforms_PropertyChanged;
 		}
 
 		private void Platforms_PropertyChanged(object sender, AvaloniaPropertyChangedEventArgs e)
