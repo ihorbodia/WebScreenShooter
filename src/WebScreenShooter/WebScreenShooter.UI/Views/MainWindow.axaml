@@ -47,19 +47,18 @@
                 Margin="4"
                 HorizontalAlignment="Stretch"/>
 
-        <ScrollViewer Height="250"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto"
-                      VerticalContentAlignment="Top"
-                      Grid.Row="3"
-                 Grid.RowSpan="5"
-                 Grid.Column="0">
-        <TextBox Text="{Binding URLs}"
-                 AcceptsReturn="True"
-                 Watermark="Add URL or add sitemap.xml"
-                 Margin="4"
-                 />
-        </ScrollViewer>
+          <ScrollViewer Height="250"
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto"
+                        VerticalContentAlignment="Top"
+                        Grid.Row="3"
+                        Grid.RowSpan="5"
+                        Grid.Column="0">
+            <TextBox Text="{Binding URLs}"
+                     AcceptsReturn="True"
+                     Watermark="Add URL or add sitemap.xml"
+                     Margin="4"/>
+          </ScrollViewer>
         
         <ListBox Items="{Binding Platfroms}"
                SelectionMode="Multiple"
