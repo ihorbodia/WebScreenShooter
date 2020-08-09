@@ -1,18 +1,47 @@
-﻿using Avalonia.Controls;
-using Avalonia.Interactivity;
-using System;
-using System.Collections.Generic;
+﻿using ReactiveUI;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Reactive;
 using WebScreenShooter.Logic.Models;
 
 namespace WebScreenShooter.UI.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public string URL => "";
-        public string SitemapURL => "";
-        public string URLs => "";
+        string url;
+        string sitemapURL;
+        string urls;
+
+        public MainWindowViewModel()
+        {
+            Add = ReactiveCommand.Create(() => { });
+            GetURL = ReactiveCommand.Create(() => { });
+            Storage = ReactiveCommand.Create(() => { });
+            Reset = ReactiveCommand.Create(() => { });
+            Start = ReactiveCommand.Create(() => { });
+        }
+
+        public string URL
+        {
+            get => url;
+            set => this.RaiseAndSetIfChanged(ref url, value);
+        }
+        public string SitemapURL
+        {
+            get => sitemapURL;
+            set => this.RaiseAndSetIfChanged(ref sitemapURL, value);
+        }
+        public string URLs
+        {
+            get => urls;
+            set => this.RaiseAndSetIfChanged(ref urls, value);
+        }
+
+        public ReactiveCommand<Unit, Unit> Add { get; }
+        public ReactiveCommand<Unit, Unit> GetURL { get; }
+        public ReactiveCommand<Unit, Unit> Storage { get; }
+        public ReactiveCommand<Unit, Unit> Reset { get; }
+        public ReactiveCommand<Unit, Unit> Start { get; }
+
         public ObservableCollection<PlatformItem> Platfroms
         {
             get
@@ -28,5 +57,7 @@ namespace WebScreenShooter.UI.ViewModels
                 };
             }
         }
+
+
     }
 }
