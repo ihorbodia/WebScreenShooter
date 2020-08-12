@@ -45,6 +45,7 @@
                  HorizontalAlignment="Stretch"/>
 
         <Button Content="Get URLs"
+                Command="{Binding GetURLs}"
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="4"
@@ -82,12 +83,13 @@
         </ListBox>
 
         <Button Content="Storage"
+           Command="{Binding Storage}"
            Grid.Row="4"
            Grid.Column="1"
            Margin="4"
            HorizontalAlignment="Stretch"/>
 
-        <TextBox Text="{Binding URLs}"
+        <TextBox Text="{Binding Timeout, Mode=TwoWay}"
                 AcceptsReturn="True"
                 Watermark="Enter wait time (default ∞)"
                 Margin="4"
@@ -95,12 +97,14 @@
                 Grid.Column="1"/>
 
         <Button Content="Reset"
+           Command="{Binding Reset}"
            Grid.Row="7"
            Grid.Column="1"
            Margin="4"
            HorizontalAlignment="Stretch"/>
 
         <Button Content="Start"
+           Command="{Binding Start}"
            Grid.Row="8"
            Grid.Column="1"
            Margin="4"
